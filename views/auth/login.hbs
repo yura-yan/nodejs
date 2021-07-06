@@ -1,0 +1,59 @@
+<div class="auth">
+    <div class="row">
+        <div class="col s12">
+            <ul class="tabs">
+                <li class="tab col s6"><a class="active" href="#login">Login</a></li>
+                <li class="tab col s6"><a href="#register">Register</a></li>
+            </ul>
+        </div>
+        <div id="login" class="col s12">
+            {{#if loginError}}
+            <p class="alert">{{loginError}}</p>
+            {{/if}}
+            <form action="/auth/login" method="POST" novalidate>
+                <div class="input-field">
+                    <input name="email" id="email" type="text" class="validate" required>
+                    <label for="email">Email</label>
+                    <span class="helper-text" data-error="This field have to been an email"></span>
+                </div>
+                <div class="input-field">
+                    <input name="password" id="password" type="number" class="validate" required>
+                    <label for="password">Password</label>
+                    <span class="helper-text" data-error="This field have to been a password"></span>
+                </div>
+                <input type="hidden" name="_csrf" value="{{csrf}}">
+                <p><a href="/auth/reset">Forgot password?</a></p>
+                <button class="btn btn-primary" type="submit">Login</button>
+            </form>
+        </div>
+        <div id="register" class="col s12">
+            {{#if registerError}}
+            <p class="alert">{{registerError}}</p>
+            {{/if}}
+            <form action="/auth/register" method="POST" novalidate>
+                <div class="input-field">
+                    <input name="name" id="name" type="text" class="validate" required>
+                    <label for="name">Name</label>
+                    <span class="helper-text" data-error="This field have to been a name"></span>
+                </div>
+                <div class="input-field">
+                    <input name="email" id="remail" type="text" class="validate" required>
+                    <label for="remail">Email</label>
+                    <span class="helper-text" data-error="This field have to been an email"></span>
+                </div>
+                <div class="input-field">
+                    <input name="password" id="rpassword" type="number" class="validate" required>
+                    <label for="rpassword">Password</label>
+                    <span class="helper-text" data-error="This field have to been a password"></span>
+                </div>
+                <div class="input-field">
+                    <input name="confpass" id="confpass" type="number" class="validate" required>
+                    <label for="confpass">Password again</label>
+                    <span class="helper-text" data-error="This field have to been a password"></span>
+                </div>
+                <input type="hidden" name="_csrf" value="{{csrf}}">
+                <button class="btn btn-primary" type="submit">Register</button>
+            </form>
+        </div>
+    </div>
+</div>

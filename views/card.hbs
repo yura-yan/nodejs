@@ -1,0 +1,31 @@
+<h1>Busket</h1>
+<div id="table">
+    {{#if course.length}}
+    <table>
+        <thead>
+            <tr>
+                <th>Course name</th>
+                <th>Course count</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            {{#each course}}
+            <tr>
+                <td>{{title}}</td>
+                <td>{{count}}</td>
+                <td><button class="btn btn-small action" data-id="{{id}}" data-csrf="{{@root.csrf}}">Delete</button></td>
+            </tr>
+            {{/each}}
+        </tbody>
+    </table>
+    <p><strong>Price: </strong><span class="price">{{price}}</span></p>
+    <form action="/orders" method="POST">
+    <input type="hidden" name="_csrf" value="{{csrf}}">
+    <button type="submit" class="btn">Order</button>
+    </form>
+    {{else}}
+    <p>Busket is empty</p>
+    {{/if}}
+</div>
